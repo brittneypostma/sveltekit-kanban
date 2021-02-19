@@ -1,0 +1,32 @@
+:root {
+  /* Variables */
+  /* Colors */
+  --light: 75%;
+  --primary: hsl(203, 70%, 51%);
+  --secondary: hsl(200, 3%, 83%);
+  --accent: hsl(45, 89%, 53%);
+  --hover: ;
+  --error: hsl(0, 87%, 60%);
+  --success: hsl(163, 90%, 39%);
+  --text: hsl(0, 0, 0);
+  --bg: hsl(255, 100%, 100%);
+}
+
+/* *Scrollbar* */
+:root {
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent) var(--primary);
+}
+
+:root::-webkit-scrollbar {
+  width: 8px;
+}
+:root::-webkit-scrollbar-track {
+  background: var(--primary);
+}
+:root::-webkit-scrollbar-thumb {
+  background: var(--accent);
+}
+:root::-webkit-scrollbar-thumb:hover {
+  background: var(--hover);
+}
