@@ -1,15 +1,66 @@
 :root {
   /* Variables */
   /* Colors */
-  --light: 75%;
-  --primary: hsl(203, 70%, 51%);
+  --primary-color-h: 203;
+  --primary-color-s: 70%;
+  --primary-color-l: 50%;
+  --alpha: 1;
+  --primary-color: hsl(
+    var(--primary-color-h),
+    var(--primary-color-s),
+    var(--primary-color-l),
+    var(--alpha)
+  );
+
+  /*   lighten */
+  --primary-color--light: hsl(
+    var(--primary-color-h),
+    var(--primary-color-s),
+    calc(var(--primary-color-l) + 15%),
+    var(--alpha)
+  );
+
+  /*   darken */
+  --primary-color--dark: hsl(
+    var(--primary-color-h),
+    var(--primary-color-s),
+    calc(var(--primary-color-l) - 15%),
+    var(--alpha)
+  );
+
+  /*  grayed */
+  --primary-color--gray: hsl(
+    var(--primary-color-h),
+    0,
+    calc(var(--primary-color-l) - 15%),
+    var(--alpha)
+  );
+
+  /*   complement */
+  --secondary-color: hsl(
+    calc(var(--primary-color-h) + 180),
+    var(--primary-color-s),
+    var(--primary-color-l),
+    var(--alpha)
+  );
+
+  /* accent */
+  --secondary-color: hsl(
+    calc(var(--primary-color-h) - 158),
+    calc(var(--primary-color-s) + 20),
+    var(--primary-color-l),
+    var(--alpha)
+  );
+  --black: hsl(0, 0, 0, var(--alpha));
+  --white: hsl(255, 255, 255, var(--alpha));
+  /* --primary: hsl(203, 70%, 51%);
   --secondary: hsl(200, 3%, 83%);
   --accent: hsl(45, 89%, 53%);
-  --hover: ;
+  --hover: ; */
   --error: hsl(0, 87%, 60%);
   --success: hsl(163, 90%, 39%);
-  --text: hsl(0, 0, 0);
-  --bg: hsl(255, 100%, 100%);
+  --text: var(--black);
+  --bg: var(--white);
 }
 
 /* *Scrollbar* */
