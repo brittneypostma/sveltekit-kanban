@@ -11,7 +11,7 @@
   }
 
   main {
-    padding: var(--base);
+    padding: var(--base) 0 var(--base) var(--base);
     min-height: 97vh;
     display: grid;
     grid-template-columns: minmax(0, 1fr);
