@@ -71,12 +71,13 @@ button {
 }
 button:hover {
   --shadow: 4px 4px 0 var(--black);
-  box-shadow: var(--shadow);
+  box-shadow: var(--shadow), var(--outline);
   filter: brightness(1.1);
 }
-button:not(:hover) {
+/* button:not(:hover) {
   box-shadow: var(--shadow);
-}
+} */
+
 button:active {
   position: relative;
   top: 1px;

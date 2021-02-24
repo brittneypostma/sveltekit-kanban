@@ -8,15 +8,10 @@
 <style>
   :global(#svelte) {
     min-height: 100vh;
-  }
-
-  main {
-    padding: var(--base) 0 var(--base) var(--base);
-    min-height: 97vh;
     display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    grid-template-rows: auto 1fr;
-    gap: var(--base);
-    place-items: start;
+    grid-template: 1fr auto / minmax(0, 1fr);
+  }
+  footer {
+    padding: var(--sm);
   }
 </style>

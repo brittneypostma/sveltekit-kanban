@@ -1,18 +1,46 @@
 <script>
+  import {onMount} from 'svelte'
   import Column from '$components/Column.svelte'
+  import {persistStore} from '$data/persistStore'
+
+  
+const defaultColumns = [
+  {
+    title: 'Todo',
+    cards: [],
+  },
+  {
+    title: 'In Progress',
+    cards: [],
+  },
+  {
+    title: 'Complete',
+    cards: [],
+  },
+]
+
+const store = persistStore('store', defaultColumns)
+
+function add() {
+  const newCol = {
+    id: Math.random().toString(36).substring(2, 15),
+    title: 'Title',
+    cards: [],
+  }
+  store = [newCol, ...store]
+}
+
+
+
 </script>
 
-<!-- List out boards -->
+<!-- List out columns -->
 <!-- Get Local Storage info -->
-<!-- Create new board -->
-<button>Create new board</button>
 <section>
-  <button class="add">&plus;</button>
-  <Column />
-  <Column />
-  <Column />
-  <Column />
-  <Column />
+  <button class="add" on:click={add}>&plus;</button>
+  {#each defaultColumns as columns, id}
+    <Column {id} {...columns} />
+  {/each}
 </section>
 
 <style>
@@ -22,7 +50,7 @@
   }
   section {
     overflow-x: auto;
-    padding: var(--base) 0;
+    padding: var(--base);
     display: flex;
     flex-wrap: nowrap;
     height: 100%;
