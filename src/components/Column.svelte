@@ -1,14 +1,12 @@
 <script>
   import Card from '$components/Card.svelte'
-  export let id;
-  export let title;
-  // export let cards = []
+  export let column;
 </script>
 
 <div class="col">
   <header>
     <h2>
-      <input type="text" placeholder={title} />
+      <input type="text" placeholder={column.title} />
     </h2>
     <button class="delete">
       <svg
@@ -28,9 +26,9 @@
   </header>
   <button>&plus; Add Card</button>
   <article>
-    <!-- {#each cards as card, id}
-      <Card {id} {card} />
-    {/each} -->
+    {#each column.cards as card (card.id)}
+      <Card {card} />
+    {/each}
   </article>
 </div>
 

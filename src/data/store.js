@@ -4,26 +4,43 @@ const defaultColumns = [
   {
     id: 1,
     title: 'Todo',
-    tasks: [],
+    cards: [
+      {
+        id: 1,
+        title: 'title'
+      }
+    ],
   },
   {
     id: 2,
     title: 'In Progress',
-    tasks: [],
+    cards: [
+      {
+        id: 1,
+        title: 'title'
+      }
+    ],
   },
   {
     id: 3,
     title: 'Complete',
-    tasks: [],
+    cards: [
+      {
+        id: 1,
+        title: 'title'
+      }
+    ],
   },
 ]
 
 export const store = persistStore('store', defaultColumns)
 
-function add(newData) {
-  $store = [newData, ...$store]
-  return store
-}
+// export const store = persistStore('store', defaultColumns)
+
+// function add(newData) {
+//   $store = [newData, ...$store]
+//   return store
+// }
 
 
 // CRUD
