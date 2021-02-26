@@ -35,6 +35,21 @@ const defaultColumns = [
 
 export const store = persistStore('store', defaultColumns)
 
+export function add() {
+  const column = {
+    id: Math.floor(Math.random() * 100),
+    title: 'Title',
+    cards: [
+      {
+        id: 1,
+        title: 'Title'
+      }
+    ]
+  }
+
+  store.update((cols) => [column, ...cols])
+}
+
 // export const store = persistStore('store', defaultColumns)
 
 // function add(newData) {
