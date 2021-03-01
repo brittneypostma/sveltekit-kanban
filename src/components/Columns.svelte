@@ -1,14 +1,61 @@
 <script>
+  import { flip } from 'svelte/animate'
   import Column from './Column.svelte'
-  // import {store} from '$data/store'
-  export let store = []
+  import { store } from '$stores/store.js'
 
-  console.log(store)
+  import { dndzone } from 'svelte-dnd-action'
+  function handleDndConsiderColumns(e) {
+    $store = e.detail.items
+  }
+  function handleDndFinalizeColumns(e) {
+    $store = e.detail.items
+  }
 </script>
 
-
-  {#each store as column (column.id)}
-    <Column {column}/>
+<div
+  use:dndzone="{{ items: $store, type: 'columns' }}"
+  on:consider="{handleDndConsiderColumns}"
+  on:finalize="{handleDndFinalizeColumns}"
+>
+  {#each $store as column, idx (column.id)}
+    <section
+      class="col"
+      id="{column.id}"
+      idx="{idx}"
+      animate:flip="{{ duration: 300 }}"
+    >
+      <Column column="{column}" idx="{idx}" />
+    </section>
   {/each}
+</div>
 
+<style>
+  div {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+  }
+  section {
+    margin-right: var(--lg);
+    height: 100%;
+    box-shadow: var(--shadow);
+    border-radius: var(--lg);
+    display: grid;
+    grid-template-rows: auto auto auto 1fr;
+  }
 
+  .col {
+    user-select: none;
+    border-radius: var(--lg);
+    height: 100%;
+    min-width: 300px;
+    background: var(--accent);
+    color: var(--white);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--base);
+    align-items: start;
+    align-content: flex-start;
+    padding: var(--base);
+  }
+</style>

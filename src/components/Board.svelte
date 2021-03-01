@@ -1,31 +1,26 @@
 <script>
-  import {add} from '$data/store'
+  import { addColumn } from '$stores/store'
 </script>
 
 <section>
-  <button class="add" on:click={add}>&plus;</button>
-  <slot />
+  <button class="add" on:click="{addColumn}">&plus;</button>
+    <slot />
 </section>
 
 <style>
-    .add {
+  .add {
     font-size: var(--xl);
     margin-right: var(--lg);
   }
-
   section {
     overflow-x: auto;
-    padding: var(--base);
+    padding: var(--base) 0;
     display: flex;
     flex-wrap: nowrap;
-    height: 100%;
+    height: 100vh;
     width: 100%;
     scrollbar-width: thin;
     scrollbar-color: var(--accent) var(--primary);
-  }
-
-  section :global(.col) + :global(.col) {
-    margin-left: var(--lg);
   }
   /* *Chrome Scrollbar* */
   section::-webkit-scrollbar {
